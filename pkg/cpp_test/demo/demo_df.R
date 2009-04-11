@@ -1,0 +1,5 @@
+library.dynam("demo_df", package="rcppbind")
+demo_df <- function(a) .Call("demo_df", a)
+a <- as.double(1:3)
+b <- data.frame(cbind(x=1., y=1:10), fac=sample(a, 10, replace=TRUE))
+demo_df(b)

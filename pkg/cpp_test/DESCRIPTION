@@ -1,0 +1,11 @@
+Package: cpp_test
+Title: A C++ template library for R
+Version: 1.0
+Date: 2008-7-30
+Author: Gang Liang <gumpleon@gmail.com>
+Maintainer: Gang Liang <gumpleon@gmail.com>
+Description: It is a R/C++ template library. The goal of this library is to provide a simple interface between R and C++, so C++ developers for R can access R objects in the C++ way without worrying about many R internal structures and underlying details. Currently, the template library supports the four most commonly used object-types in R, namely, vector, matrix, data.frame, and list. Given the template framework, special data types (char*, Date, time) can be accessed similar to other regular data types, such as int, double. For more information, please see the package documentation file doc/rcppbind.pdf.
+Depends: R (>= 2.0.0)
+SystemRequirements: None
+License: LGPL Version 2.1 or later
+Packaged: Wed July 30 2008; Gang Liang

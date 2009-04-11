@@ -1,0 +1,6 @@
+demo_date          Demo code for manipulating R date objects
+demo_df            Demo code for manipulating R data.frame objects
+demo_list          Demo code for manipulating R list objects
+demo_matrix        Demo code for manipulating R matrix objects
+demo_str           Demo code for manipulating R string objects
+demo_time          Demo code for manipulating R time objects
