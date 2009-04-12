@@ -1,2 +1,0 @@
-PKG_CXXFLAGS=-g -O2 -I../include
-PKG_LIBS=
