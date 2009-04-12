@@ -10,8 +10,6 @@ consistency <- function(formula, data) {
 				return(max(as.vector(table(classes))))
 			})
 		result = sum(result[[2]]) / length(hashvec)
-		print(attrs)
-		print(result)
 		return(result)
 	}
 
