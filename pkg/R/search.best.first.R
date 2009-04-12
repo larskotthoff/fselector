@@ -9,7 +9,7 @@ best.first.search <- function(attributes, eval.fun, max.backtracks = 5) {
 		children = create.children(parent_state, "forward", omit.func = function(...) {
 			length(find.subset(states$attrs, ...)) > 0
 			})
-		children_len = dim(children)[1]
+		children_len = ifelse(is.null(children), 0, dim(children)[1])
 		if(children_len > 0) {
 			states$attrs = rbind(states$attrs, children)
 			states$open = c(states$open, rep(TRUE, children_len))

@@ -74,7 +74,8 @@ create.children <- function(parent, direction = c("forward", "backward", "both")
 	}
 	
 	m = rbind(m1, m2)
-
+	if(is.null(m))
+		return(m)
 	if(!is.null(omit.func)) {
 		rows_to_omit = apply(m, 1, omit.func)
 		return(m[!rows_to_omit,, drop = FALSE])

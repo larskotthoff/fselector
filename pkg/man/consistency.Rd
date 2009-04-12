@@ -1,15 +1,16 @@
-\name{normalize.min.max}
-\alias{normalize.min.max}
+\name{consistency}
+\alias{consistency}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ ~~function to do ... ~~ }
 \description{
   ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-normalize.min.max(data)
+consistency(formula, data)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
+  \item{formula}{ ~~Describe \code{formula} here~~ }
   \item{data}{ ~~Describe \code{data} here~~ }
 }
 \details{
@@ -35,23 +36,25 @@ normalize.min.max(data)
 ##--	or do  help(data=index)  for the standard data sets.
 
 ## The function is currently defined as
-function (data) 
+function (formula, data) 
 {
-    attr_count = dim(data)[2]
-    if (attr_count == 0) 
-        return(data)
-    for (i in 1:attr_count) {
-        if (!is.numeric(data[, i])) 
-            next()
-        if (!any(complete.cases(data[, i]))) 
-            next()
-        minimum = min(data[, i], na.rm = TRUE)
-        maximum = max(data[, i], na.rm = TRUE)
-        if (minimum == maximum) 
-            data[, i] = data[, i]/minimum
-        else data[, i] = (data[, i] - minimum)/(maximum - minimum)
+    evaluator <- function(attrs) {
+        attr_data = new_data[, attrs, drop = FALSE]
+        hashvec = as.factor(apply(attr_data, 1, digest))
+        result = aggregate(new_data[[1]], list(hash = hashvec), 
+            function(classes) {
+                return(max(as.vector(table(classes))))
+            })
+        result = sum(result[[2]])/length(hashvec)
+        print(attrs)
+        print(result)
+        return(result)
     }
-    return(data)
+    new_data = get.data.frame.from.formula(formula, data)
+    new_data = discretize.all(formula, new_data)
+    column_names = names(new_data)
+    result = best.first.search(column_names[-1], evaluator)
+    return(result)
   }
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
