@@ -15,4 +15,5 @@ export("as.simple.formula",
 	"rank.correlation",
 	"oneR",
 	"relief",
+	"consistency",
 	"random.forest.importance")

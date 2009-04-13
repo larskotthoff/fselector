@@ -1,178 +1,23 @@
 \name{cfs}
 \alias{cfs}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{ ~~function to do ... ~~ }
+\title{ CFS filter }
 \description{
-  ~~ A concise (1-5 lines) description of what the function does. ~~
+  The algorithm finds attribute subset using correlation and entropy measures for continous and discrete data.
 }
 \usage{
 cfs(formula, data)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{formula}{ ~~Describe \code{formula} here~~ }
-  \item{data}{ ~~Describe \code{data} here~~ }
-}
+  \item{formula}{ a symbolic description of a model }
+  \item{data}{ data to process }}
 \details{
-  ~~ If necessary, more details than the description above ~~
+  The alorithm makes use of \code{\link{best.first.search}} for searching the attribute subset space.
 }
+\seealso{ \code{\link{best.first.search}} }
 \value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
+a character vector containing chosen attributes
 }
-\references{ ~put references to the literature/web site here ~ }
-\author{ ~~who you are~~ }
-\note{ ~~further notes~~ 
-
- ~Make other sections like Warning with \section{Warning }{....} ~
-}
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
+\author{ Piotr Romanski }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (formula, data) 
-{
-    prepare_cor_matix <- function(formula, or_data) {
-        cfs_cor <- function(a, b) {
-            result = 0
-            if (!is.factor(a) && !is.factor(b)) {
-                complete = complete.cases(a) & complete.cases(b)
-                if (!any(complete)) 
-                  return(0)
-                vec1 = a[complete]
-                vec2 = b[complete]
-                if (sd(vec1) == 0 || sd(vec2) == 0) 
-                  return(0)
-                result = cor(vec1, vec2)
-            }
-            else if (is.factor(a) && is.factor(b)) {
-                tab = table(a, b)
-                alevels = rownames(tab)
-                blevels = colnames(tab)
-                result = sum(sapply(alevels, function(avalue) {
-                  avec = as.numeric(a == avalue)
-                  complete_a = complete.cases(a)
-                  return(sum(sapply(blevels, function(bvalue) {
-                    bvec = as.numeric(b == bvalue)
-                    complete_b = complete.cases(b)
-                    complete = complete_a & complete_b
-                    avec_complete_data = avec[complete]
-                    bvec_complete_data = bvec[complete]
-                    if (sd(avec_complete_data, na.rm = TRUE) == 
-                      0 || sd(bvec_complete_data, na.rm = TRUE) == 
-                      0) return(0)
-                    return(tab[avalue, bvalue]/length(a) * cor(avec_complete_data, 
-                      bvec_complete_data))
-                  })))
-                }))
-            }
-            else {
-                cont = NULL
-                disc = NULL
-                if (is.factor(a)) {
-                  cont = b
-                  disc = a
-                }
-                else {
-                  cont = a
-                  disc = b
-                }
-                cont_complete = complete.cases(cont)
-                disc_table = table(disc)
-                disc_levels = names(disc_table)
-                if (length(disc_levels) == 0) {
-                  result = 0
-                }
-                else {
-                  result = sum(sapply(disc_levels, function(lev) {
-                    disc_vec = as.numeric(disc == lev)
-                    disc_vec_complete = complete.cases(disc_vec)
-                    complete = cont_complete & disc_vec_complete
-                    disc_vec_complete_data = disc_vec[complete]
-                    cont_complete_data = cont[complete]
-                    if (sd(cont_complete_data) == 0) return(0)
-                    return(disc_table[lev]/length(disc) * cor(disc_vec_complete_data, 
-                      cont_complete_data))
-                  }))
-                }
-            }
-            return(result)
-        }
-        classification = is.factor(or_data[[1]])
-        attr_count = dim(or_data)[2]
-        attr_names = colnames(or_data)
-        result = matrix(rep(0, attr_count^2), nrow = attr_count, 
-            ncol = attr_count, dimnames = list(attr_names, attr_names))
-        if (classification) {
-            new_data = supervised.discretization(formula, data = or_data)
-            new_data = get.data.frame.from.formula(formula, or_data)
-            entropies = sapply(new_data, entropy)
-            for (i in 1:(attr_count - 1)) {
-                xname = attr_names[i]
-                for (j in (i + 1):attr_count) {
-                  yname = attr_names[j]
-                  tmp_res = 2 * (entropies[xname] + entropies[yname] - 
-                    joint.entropy(new_data[[xname]], new_data[[yname]]))/(entropies[xname] + 
-                    entropies[yname])
-                  result[xname, yname] = tmp_res
-                  result[yname, xname] = tmp_res
-                }
-            }
-        }
-        else {
-            for (i in 1:(attr_count - 1)) {
-                xname = attr_names[i]
-                for (j in (i + 1):attr_count) {
-                  yname = attr_names[j]
-                  tmp_res = cfs_cor(or_data[[xname]], or_data[[yname]])
-                  result[xname, yname] = tmp_res
-                  result[yname, xname] = tmp_res
-                }
-            }
-        }
-        return(result)
-    }
-    evaluator <- function(cors, attrs) {
-        ff_sum = 0
-        ff_count = 0
-        fc_sum = 0
-        attr_count = length(attrs)
-        if (attr_count <= 0) 
-            stop("Attributes not specified")
-        for (i in 1:attr_count) {
-            attr1 = attrs[i]
-            fc_sum = fc_sum + cors[attr1, 1]
-            if (i == attr_count) {
-                next()
-            }
-            for (j in (i + 1):attr_count) {
-                attr2 = attrs[j]
-                ff_count = ff_count + 1
-                ff_sum = ff_sum + cors[attr1, attr2]
-            }
-        }
-        ff_cor = ff_sum/ff_count
-        fc_cor = fc_sum/attr_count
-        if (attr_count == 1) 
-            return(fc_cor)
-        else return(attr_count * fc_cor/sqrt(attr_count + attr_count * 
-            (attr_count - 1) * ff_cor))
-    }
-    new_data = get.data.frame.from.formula(formula, data)
-    correlations = prepare_cor_matix(formula, new_data)
-    result = best.first.search(names(new_data)[-1], function(...) {
-        evaluator(correlations, ...)
-    })
-    return(result)
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

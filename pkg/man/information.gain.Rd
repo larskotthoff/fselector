@@ -1,47 +1,31 @@
-\name{information.gain}
+\name{entropy.based}
 \alias{information.gain}
-%- Also NEED an '\alias' for EACH other topic documented here.
-\title{ ~~function to do ... ~~ }
+\alias{information.gain.ratio}
+\alias{symmetrical.uncertainty}
+\title{ Entropy-based filters }
 \description{
-  ~~ A concise (1-5 lines) description of what the function does. ~~
+  The algorithms find weights of discrete attributes basing on their correlation with continous class attribute.
 }
 \usage{
 information.gain(formula, data)
+information.gain.ratio(formula, data)
+symmetrical.uncertainty(formula, data)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{formula}{ ~~Describe \code{formula} here~~ }
-  \item{data}{ ~~Describe \code{data} here~~ }
+  \item{formula}{ a symbolic description of a model }
+  \item{data}{ data to process }
 }
 \details{
-  ~~ If necessary, more details than the description above ~~
+  \code{information.gain} is \deqn{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Class) + H(Attribute) - H(Class, Attribute)}.
+  
+  \code{information.gain.ratio} is \deqn{\frac{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Attribute)}}{(H(Class) + H(Attribute) - H(Class, Attribute)) / H(Attribute)}
+
+  \code{symmetrical.uncertainty} is \deqn{2\frac{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Attribute) + H(Class)}}{2 * (H(Class) + H(Attribute) - H(Class, Attribute)) / (H(Attribute) + H(Class))}
 }
 \value{
-  ~Describe the value returned
-  If it is a LIST, use
-  \item{comp1 }{Description of 'comp1'}
-  \item{comp2 }{Description of 'comp2'}
-  ...
+a data.frame containing ranks for attributes in the first column and their names as row names
 }
-\references{ ~put references to the literature/web site here ~ }
-\author{ ~~who you are~~ }
-\note{ ~~further notes~~ 
-
- ~Make other sections like Warning with \section{Warning }{....} ~
-}
-\seealso{ ~~objects to See Also as \code{\link{help}}, ~~~ }
+\author{ Piotr Romanski }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (formula, data) 
-{
-    information.gain.body(formula, data, type = "infogain")
-  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line

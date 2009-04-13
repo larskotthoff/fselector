@@ -3,12 +3,10 @@
 \alias{FSelector}
 \docType{package}
 \title{
-What the package does (short line)
-~~ package title ~~
+  Package for selecting attributes
 }
 \description{
-More about what it does (maybe more than one line)
-~~ A concise (1-5 lines) description of the package ~~
+  Package containing functions for selecting attributes from a given dataset and a destination attribute.
 }
 \details{
 \tabular{ll}{
@@ -16,27 +14,25 @@ Package: \tab FSelector\cr
 Type: \tab Package\cr
 Version: \tab 1.0\cr
 Date: \tab 2009-04-11\cr
-License: \tab What license is it under?\cr
+License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
-~~ An overview of how to use the package, including the most important functions ~~
+This package contains:
+\enumerate{
+	\item{Algorithms for filtering attributes: cfs, chi.squared, information.gain, information.gain.ratio, symmetrical.uncertainty, linear.correlation, rank.correlation, oneR, relief, consistency, random.forest.importance}
+	\item{Algorithms for wrapping classifiers and search attribute subset space: best.first.search, backward.search, forward.search, hill.climbing.search}
+	\item{Algorithm for choosing a subset of attributes based on attributes' weights: cutoff.k, cutoff.k.percent, cutoff.biggest.diff}
+	\item{Algorithm for creating formulas: as.simple.formula}
+}
 }
 \author{
-Who wrote it
-
-Maintainer: Who to complain to <yourfault@somewhere.net>
-~~ The author and/or maintainer of the package ~~
+Piotr Romanski \cr
+Maintainer: Piotr Romanski <p.romanski@stud.elka.pw.edu.pl>
 }
 \references{
-~~ Literature or other references for background information ~~
+
 }
-~~ Optionally other standard keywords, one per line, from file KEYWORDS in the R documentation ~~
-~~ directory ~~
 \keyword{ package }
-\seealso{
-~~ Optional links to other man pages, e.g. ~~
-~~ \code{\link[<pkg>:<pkg>-package]{<pkg>}} ~~
-}
 \examples{
-~~ simple examples of the most important functions ~~
+
 }
