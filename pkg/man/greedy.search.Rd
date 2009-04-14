@@ -20,7 +20,7 @@ forward.search(attributes, eval.fun)
   A character vector of selected attributes.
 }
 \author{ Piotr Romanski }
-\seealso{ \code{\link{best.first.search}}, \code{\link{hill.climbing.search}} }
+\seealso{ \code{\link{best.first.search}}, \code{\link{hill.climbing.search}}, \code{\link{exhaustive.search}} }
 \examples{
 
 }

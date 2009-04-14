@@ -19,7 +19,7 @@ best.first.search(attributes, eval.fun, max.backtracks = 5)
   A character vector of selected attributes.
 }
 \author{ Piotr Romanski }
-\seealso{ \code{\link{forward.search}}, \code{\link{backward.search}}, \code{\link{hill.climbing.search}} }
+\seealso{ \code{\link{forward.search}}, \code{\link{backward.search}}, \code{\link{hill.climbing.search}}, \code{\link{exhaustive.search}} }
 \examples{
 
 }

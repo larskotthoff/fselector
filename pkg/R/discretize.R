@@ -51,7 +51,6 @@ equal.width.binning.discretization <- function(data, bins) {
 
 #MDL - Fayyad, Irani
 # TODO: dont use weka
-# FIXME: class attribute NA - error
 supervised.discretization <- function(formula, data) {
 	data = get.data.frame.from.formula(formula, data)
 	complete = complete.cases(data[[1]])
