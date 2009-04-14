@@ -53,5 +53,15 @@ equal.width.binning.discretization <- function(data, bins) {
 # TODO: dont use weka
 # FIXME: class attribute NA - error
 supervised.discretization <- function(formula, data) {
-	return(Discretize(formula, data = data, na.action = na.pass))
+	data = get.data.frame.from.formula(formula, data)
+	complete = complete.cases(data[[1]])
+	all.complete = all(complete)
+	if(!all.complete) {
+		new_data = data[complete, , drop=FALSE]
+		result = Discretize(formula, data = new_data, na.action = na.pass)
+		return(result)
+	} else {
+		return(Discretize(formula, data = data, na.action = na.pass))
+	}
+	
 }
