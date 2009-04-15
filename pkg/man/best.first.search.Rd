@@ -2,7 +2,7 @@
 \alias{best.first.search}
 \title{ Best-first search }
 \description{
-  The algorithm for searching atrributes' subset space.
+  The algorithm for searching atrribute subset space.
 }
 \usage{
 best.first.search(attributes, eval.fun, max.backtracks = 5)

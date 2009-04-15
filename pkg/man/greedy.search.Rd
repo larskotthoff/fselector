@@ -3,7 +3,7 @@
 \alias{forward.search}
 \title{ Greedy search }
 \description{
-  The algorithms for searching atrributes' subset space.
+  The algorithms for searching atrribute subset space.
 }
 \usage{
 backward.search(attributes, eval.fun)

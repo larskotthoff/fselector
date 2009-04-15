@@ -17,9 +17,9 @@ relief(formula, data, neighbours.count = 5, sample.size = 10)
 	The algorithm samples instances and finds their nearest hits and misses. Considering that result, it evaluates weights of attributes.
 }
 \references{
-	\enumerate{
-		\item{Igor Kononenko: Estimating Attributes: Analysis and Extensions of RELIEF. In: European Conference on Machine Learning, 171-182, 1994.}
-		\item{Marko Robnik-Sikonja, Igor Kononenko: An adaptation of Relief for attribute estimation in regression. In: Fourteenth International Conference on Machine Learning, 296-304, 1997.}
+	\itemize{
+		\item{-}{Igor Kononenko: Estimating Attributes: Analysis and Extensions of RELIEF. In: European Conference on Machine Learning, 171-182, 1994.}
+		\item{-}{Marko Robnik-Sikonja, Igor Kononenko: An adaptation of Relief for attribute estimation in regression. In: Fourteenth International Conference on Machine Learning, 296-304, 1997.}
 	}
 }
 \value{

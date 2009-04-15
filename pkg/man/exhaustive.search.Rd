@@ -2,7 +2,7 @@
 \alias{exhaustive.search}
 \title{ Exhaustive search }
 \description{
-  The algorithm for searching atrributes' subset space.
+  The algorithm for searching atrribute subset space.
 }
 \usage{
 exhaustive.search(attributes, eval.fun)

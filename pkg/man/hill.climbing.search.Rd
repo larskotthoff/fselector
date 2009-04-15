@@ -2,7 +2,7 @@
 \alias{hill.climbing.search}
 \title{ Hill climbing search }
 \description{
-  The algorithm for searching atrributes' subset space.
+  The algorithm for searching atrribute subset space.
 }
 \usage{
 hill.climbing.search(attributes, eval.fun)

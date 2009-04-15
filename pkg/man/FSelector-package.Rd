@@ -18,11 +18,11 @@ License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
 This package contains:
-\enumerate{
-	\item{Algorithms for filtering attributes: cfs, chi.squared, information.gain, information.gain.ratio, symmetrical.uncertainty, linear.correlation, rank.correlation, oneR, relief, consistency, random.forest.importance}
-	\item{Algorithms for wrapping classifiers and search attribute subset space: best.first.search, backward.search, forward.search, hill.climbing.search}
-	\item{Algorithm for choosing a subset of attributes based on attributes' weights: cutoff.k, cutoff.k.percent, cutoff.biggest.diff}
-	\item{Algorithm for creating formulas: as.simple.formula}
+\itemize{
+	\item{-}{Algorithms for filtering attributes: cfs, chi.squared, information.gain, information.gain.ratio, symmetrical.uncertainty, linear.correlation, rank.correlation, oneR, relief, consistency, random.forest.importance}
+	\item{-}{Algorithms for wrapping classifiers and search attribute subset space: best.first.search, backward.search, forward.search, hill.climbing.search}
+	\item{-}{Algorithm for choosing a subset of attributes based on attributes' weights: cutoff.k, cutoff.k.percent, cutoff.biggest.diff}
+	\item{-}{Algorithm for creating formulas: as.simple.formula}
 }
 }
 \author{

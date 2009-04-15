@@ -9,7 +9,7 @@ consistency(formula, data)
 }
 \arguments{
   \item{formula}{ a symbolic description of a model }
-  \item{data}{ data to process }}
+  \item{data}{ data to process }
 }
 \details{
 
