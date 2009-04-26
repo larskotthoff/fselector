@@ -7,8 +7,9 @@ normalize.min.max <- function(data) {
 			next()
 		if(!any(complete.cases(data[, i])))
 			next()
-		minimum = min(data[, i], na.rm = TRUE)
-		maximum = max(data[, i], na.rm = TRUE)
+		mm = range(data[, i], na.rm = TRUE)
+		minimum = mm[1]
+		maximum = mm[2]
 		if(minimum == maximum)
 			data[, i] = data[, i] / minimum
 		else

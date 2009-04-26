@@ -1,6 +1,6 @@
 \name{entropy.based}
 \alias{information.gain}
-\alias{information.gain.ratio}
+\alias{gain.ratio}
 \alias{symmetrical.uncertainty}
 \title{ Entropy-based filters }
 \description{
@@ -8,7 +8,7 @@
 }
 \usage{
 information.gain(formula, data)
-information.gain.ratio(formula, data)
+gain.ratio(formula, data)
 symmetrical.uncertainty(formula, data)
 }
 \arguments{
@@ -18,7 +18,7 @@ symmetrical.uncertainty(formula, data)
 \details{
   \code{information.gain} is \deqn{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Class) + H(Attribute) - H(Class, Attribute)}.
   
-  \code{information.gain.ratio} is \deqn{\frac{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Attribute)}}{(H(Class) + H(Attribute) - H(Class, Attribute)) / H(Attribute)}
+  \code{gain.ratio} is \deqn{\frac{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Attribute)}}{(H(Class) + H(Attribute) - H(Class, Attribute)) / H(Attribute)}
 
   \code{symmetrical.uncertainty} is \deqn{2\frac{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Attribute) + H(Class)}}{2 * (H(Class) + H(Attribute) - H(Class, Attribute)) / (H(Attribute) + H(Class))}
 }

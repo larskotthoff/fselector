@@ -6,15 +6,15 @@ information.gain <- function(formula, data) {
 	information.gain.body(formula, data, type = "infogain")
 }
 
-information.gain.ratio <- function(formula, data) {
-	information.gain.body(formula, data, type = "infogainratio")	
+gain.ratio <- function(formula, data) {
+	information.gain.body(formula, data, type = "gainratio")	
 }
 
 symmetrical.uncertainty <- function(formula, data) {
 	information.gain.body(formula, data, type = "symuncert")	
 }
 
-information.gain.body <- function(formula, data, type = c("infogain", "infogainratio", "symuncert")) {
+information.gain.body <- function(formula, data, type = c("infogain", "gainratio", "symuncert")) {
 	type = match.arg(type)
 	new_data = get.data.frame.from.formula(formula, data)
 	new_data = discretize.all(formula, new_data)
@@ -27,7 +27,7 @@ information.gain.body <- function(formula, data, type = c("infogain", "infogainr
 		})
 	results = class_entropy + attr_entropies - joint_entropies
 
-	if(type == "infogainratio") {
+	if(type == "gainratio") {
 		results = results / attr_entropies
 	} else if(type == "symuncert") {
 		results = 2 * results / (attr_entropies	+ class_entropy)
