@@ -93,8 +93,9 @@ find.best <- function(results, subset = rep(TRUE, length(results))) {
 	w = which(subset)
 	if(length(w) > 0) {
 		children_results = results[w]
-		best$result = max(children_results)
-		best$idx = w[which.max(children_results)]
+		max_idx = which.max(children_results)
+		best$result = children_results[max_idx]
+		best$idx = w[max_idx]
 	}
 	return(best)
 }

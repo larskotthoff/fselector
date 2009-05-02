@@ -4,7 +4,7 @@ discretize.all <- function(formula, data) {
 	dest_column_name = dimnames(new_data)[[2]][1]
 	if(!is.factor(new_data[[1]])) {
 		# TODO: why 5?
-		new_data[[dest_column_name]] = equal.frequency.binning.discretization(new_data[[dest_column_name]], 5)
+		new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], 5)
 	}
 	
 	new_data = supervised.discretization(formula, data = new_data)

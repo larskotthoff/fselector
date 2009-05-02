@@ -12,7 +12,8 @@ as.simple.formula(attributes, class)
   \item{class}{ name of destination attribute }
 }
 \value{
-  A simple formula like "class ~ attr1 + attr2"}
+  A simple formula like "class ~ attr1 + attr2"
+}
 \author{ Piotr Romanski }
 \examples{
 data(iris)
