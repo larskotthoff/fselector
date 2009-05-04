@@ -16,7 +16,7 @@ as.simple.formula(attributes, class)
 }
 \author{ Piotr Romanski }
 \examples{
-data(iris)
-result <- cfs(Species ~ ., iris)
-f <- as.simple.formula(result, "Species")
+  data(iris)
+  result <- cfs(Species ~ ., iris)
+  f <- as.simple.formula(result, "Species")
 }

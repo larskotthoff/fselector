@@ -15,7 +15,14 @@ chi.squared <- function(formula, data) {
 			col_sums = apply(cont, 2, sum)
 			all_sum = sum(col_sums)
 			expected_matrix = t(as.matrix(col_sums) %*% t(as.matrix(row_sums))) / all_sum
-			return(sum((cont - expected_matrix) ^ 2 / expected_matrix))
+			chis = sum((cont - expected_matrix) ^ 2 / expected_matrix)
+			
+			if(chis == 0 || length(col_sums) < 2 || length (row_sums) < 2) {
+				return(0)
+			} else {
+				# phi or Cramer's V
+				return(sqrt(chis / (all_sum * min(length(col_sums) - 1, length(row_sums) - 1))))
+			}
 		})
 
 	attr_names = dimnames(new_data)[[2]]

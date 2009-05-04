@@ -12,9 +12,6 @@ consistency(formula, data)
   \item{data}{ data to process }
 }
 \details{
-
-}
-\details{
   The alorithm makes use of \code{\link{best.first.search}} for searching the attribute subset space.
 }
 \seealso{ \code{\link{best.first.search}} }
@@ -23,5 +20,10 @@ a character vector containing chosen attributes
 }
 \author{ Piotr Romanski }
 \examples{
-
+  library(mlbench)
+  data(HouseVotes84)
+  
+  subset <- consistency(Class~., HouseVotes84)
+  f <- as.simple.formula(subset, "Class")
+  print(f)
 }

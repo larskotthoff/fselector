@@ -19,5 +19,9 @@ a character vector containing chosen attributes
 }
 \author{ Piotr Romanski }
 \examples{
-
+  data(iris)
+  
+  subset <- cfs(Species~., iris)
+  f <- as.simple.formula(subset, "Species")
+  print(f)
 }
