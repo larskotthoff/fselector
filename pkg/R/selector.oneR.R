@@ -10,6 +10,7 @@ oneR <- function(formula, data) {
 	new_data = new_data[-1] #new_data without class attr
 	
 	results = sapply(new_data, function(vec) {
+			vec = factor(vec)
 			errors = sapply(levels(vec), function(val) {
 					cvaluestab = as.vector(table(class_data[ which(vec == val) ]))
 					return(sum(cvaluestab[ -which.max(cvaluestab) ]) / sum(cvaluestab))
