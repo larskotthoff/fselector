@@ -15,7 +15,7 @@ relief <- function(formula, data, neighbours.count = 5, sample.size = 10) {
 				next()
 			
 			dist = instance_distance(instance, current_instance)
-				
+			
 			if(classification)
 				class_no = which(classes == current_instance[[1]])
 			else
@@ -106,7 +106,11 @@ relief <- function(formula, data, neighbours.count = 5, sample.size = 10) {
 				return(field_distance(i, instance1, instance2))
 			})
 		#return(sqrt(sum(result ^ 2))) #sqrt not needed
-		return(sum(result ^ 2))
+		res = sum(result ^ 2)
+		if(is.na(res)) {
+			error("Internal error. Distance NA.")
+		}
+		return(res)
 	}
 	
 	# uses parent.env
@@ -210,7 +214,13 @@ relief <- function(formula, data, neighbours.count = 5, sample.size = 10) {
 				if(!is.factor(vec) || !any(is.na(vec)))
 					return(NULL)
 				tab = table(vec, class_vector)
-				return(apply(tab, 2, function(x) return(x / sum(x))))
+				return(apply(tab, 2, function(x) {
+						s = sum(x) 
+						if(s == 0)
+							return(x)
+						else
+							return(x / s)
+					}))
 			})
 	} else {
 		class_count = 1
@@ -222,7 +232,9 @@ relief <- function(formula, data, neighbours.count = 5, sample.size = 10) {
 				if(!is.factor(vec) || !any(is.na(vec)))
 					return(NULL)
 				tab = table(vec)
-				tab = tab / sum(tab)
+				if(sum(tab) != 0) {
+					tab = tab / sum(tab)
+				}
 				return(tab)
 			})
 		p_same_val = lapply(p_val, function(attr) {

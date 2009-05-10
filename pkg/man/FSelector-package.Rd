@@ -12,7 +12,7 @@
 \tabular{ll}{
 Package: \tab FSelector\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 0.16\cr
 Date: \tab 2009-04-11\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr

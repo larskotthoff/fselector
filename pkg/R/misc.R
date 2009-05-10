@@ -5,7 +5,7 @@ as.simple.formula <- function(attributes, class) {
 get.data.frame.from.formula <- function(formula, data) {
 	d = model.frame(formula, data, na.action = NULL)
 	for(i in 1:dim(d)[2]) {
-		if(is.logical(d[[i]]))
+		if(is.factor(d[[i]]) || is.logical(d[[i]]) || is.character(d[[i]]))
 			d[[i]] = factor(d[[i]])
 	}
 	return(d)
