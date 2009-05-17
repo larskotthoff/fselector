@@ -108,7 +108,7 @@ relief <- function(formula, data, neighbours.count = 5, sample.size = 10) {
 		#return(sqrt(sum(result ^ 2))) #sqrt not needed
 		res = sum(result ^ 2)
 		if(is.na(res)) {
-			error("Internal error. Distance NA.")
+			stop("Internal error. Distance NA.")
 		}
 		return(res)
 	}

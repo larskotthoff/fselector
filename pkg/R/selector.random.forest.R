@@ -1,10 +1,9 @@
 ### RANDOM FOREST
 # classification and regression
 # continous and discrete data
-# NA disallowed
+# NA deleted
 random.forest.importance <- function(formula, data, importance.type = 1) {
 	#library(randomForest)
-	#set.seed(4543)
 	new_data = get.data.frame.from.formula(formula, data)
 
 	# get rid of NAs

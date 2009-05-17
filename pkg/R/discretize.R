@@ -3,7 +3,6 @@ discretize.all <- function(formula, data) {
 	
 	dest_column_name = dimnames(new_data)[[2]][1]
 	if(!is.factor(new_data[[1]])) {
-		# TODO: why 5?
 		new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], 5)
 	}
 	
@@ -15,7 +14,6 @@ discretize.all <- function(formula, data) {
 }
 
 # unupervised
-# TODO: fix
 equal.frequency.binning.discretization <- function(data, bins) {
 	bins = as.integer(bins)
 	if (!is.numeric(data)) 
@@ -50,7 +48,6 @@ equal.width.binning.discretization <- function(data, bins) {
 }
 
 #MDL - Fayyad, Irani
-# TODO: dont use weka
 supervised.discretization <- function(formula, data) {
 	data = get.data.frame.from.formula(formula, data)
 	complete = complete.cases(data[[1]])

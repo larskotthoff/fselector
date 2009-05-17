@@ -1,4 +1,3 @@
-# TODO: add start point parameter
 hill.climbing.search <- function(attributes, eval.fun) {
 	if(length(attributes) == 0)
 		stop("Attributes not specified")
