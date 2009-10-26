@@ -1,7 +1,7 @@
 Package: FSelector
 Type: Package
 Title: Selecting attributes
-Version: 0.17
+Version: 0.18
 Date: 2009-04-11
 Author: Piotr Romanski
 Maintainer: Piotr Romanski <p.romanski@stud.elka.pw.edu.pl>
