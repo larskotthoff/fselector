@@ -3,7 +3,6 @@
 # continous and discrete data
 # NA deleted
 random.forest.importance <- function(formula, data, importance.type = 1) {
-	#library(randomForest)
 	new_data = get.data.frame.from.formula(formula, data)
 
 	# get rid of NAs

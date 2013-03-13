@@ -13,7 +13,7 @@ random.forest.importance(formula, data, importance.type = 1)
   \item{importance.type}{ either 1 or 2, specifying the type of importance measure (1=mean decrease in accuracy, 2=mean decrease in node impurity) }
 }
 \details{
-  This is a wrapper for \code{\link[randomForest]{importance}}
+  This is a wrapper for \code{\link[randomForest]{importance}.}
 }
 \value{
 a data.frame containing the worth of attributes in the first column and their names as row names

@@ -12,8 +12,8 @@
 \tabular{ll}{
 Package: \tab FSelector\cr
 Type: \tab Package\cr
-Version: \tab 0.16\cr
-Date: \tab 2009-04-11\cr
+Version: \tab 0.19\cr
+Date: \tab 2013-02-28\cr
 License: \tab GPL\cr
 LazyLoad: \tab yes\cr
 }
@@ -27,6 +27,6 @@ This package contains:
 }
 \author{
 Piotr Romanski \cr
-Maintainer: Piotr Romanski <p.romanski (a) stud.elka.pw.edu.pl>
+Maintainer: Lars Kotthoff <larsko@4c.ucc.ie>
 }
 \keyword{ package }
