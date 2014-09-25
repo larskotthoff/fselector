@@ -21,3 +21,4 @@ export("as.simple.formula",
 importFrom(randomForest, randomForest, importance)
 importFrom(RWeka, Discretize)
 importFrom(digest, digest)
+importFrom(entropy, entropy)

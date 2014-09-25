@@ -74,16 +74,24 @@ cfs <- function(formula, data) {
 		
 		tmp_res = NA
 		if(classification) { #discrete class
-			tmp_res = 2.0 * (entropies[attr1] + entropies[attr2] - joint.entropy(new_data[[attr1]], new_data[[attr2]])) / (entropies[attr1] + entropies[attr2])
+			tmp_res = 2.0 * (entropies[attr1] + entropies[attr2] - entropyHelper(data.frame(cbind(new_data[[attr1]], new_data[[attr2]])))) / (entropies[attr1] + entropies[attr2])
 		} else { #continous class
 			tmp_res = cont_correlation(new_data[[attr1]], new_data[[attr2]])
 		}
+        if(is.nan(tmp_res)) {
+            # all entropies (individual + joint) are 0
+            tmp_res = 0
+        }
 
 		correlations[attr1, attr2] <<- tmp_res
 		correlations[attr2, attr1] <<- tmp_res
 		
 		return(tmp_res)
 	}
+
+    entropyHelper <- function(x) {
+        return(entropy(table(x, useNA="always")))
+    }
 	
 	# uses parent.env
 	evaluator <- function(attrs) {
@@ -99,7 +107,8 @@ cfs <- function(formula, data) {
 			attr1 = attrs[i]
 			
 			# feature-class correlation
-			fc_sum = fc_sum + get_correlation(attr1, 1, classification, new_data, entropies)
+            cor = get_correlation(attr1, 1, classification, new_data, entropies)
+            fc_sum = fc_sum + cor
 			
 			# feature-feature correlation
 			if(i == attr_count) {
@@ -107,8 +116,9 @@ cfs <- function(formula, data) {
 			}
 			for(j in (i+1):attr_count) {
 				attr2 = attrs[j]
-				ff_count = ff_count + 1
-				ff_sum = ff_sum + get_correlation(attr1, attr2, classification, new_data, entropies)
+                cor = get_correlation(attr1, attr2, classification, new_data, entropies)
+                ff_count = ff_count + 1
+                ff_sum = ff_sum + cor
 			}
 		}
 
@@ -134,7 +144,7 @@ cfs <- function(formula, data) {
 	if(classification) {
 		new_data = supervised.discretization(formula, data = new_data)
 		new_data = get.data.frame.from.formula(formula, new_data)
-		entropies = sapply(new_data, entropy)		
+		entropies = sapply(new_data, entropyHelper)		
 	}
 
 	result = best.first.search(names(new_data)[-1], evaluator)
