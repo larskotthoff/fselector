@@ -10,3 +10,7 @@ get.data.frame.from.formula <- function(formula, data) {
 	}
 	return(d)
 }
+
+entropyHelper <- function(x) {
+    return(entropy(table(x, useNA="always")))
+}

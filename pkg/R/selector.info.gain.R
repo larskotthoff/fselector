@@ -19,11 +19,11 @@ information.gain.body <- function(formula, data, type = c("infogain", "gainratio
 	new_data = get.data.frame.from.formula(formula, data)
 	new_data = discretize.all(formula, new_data)
 	
-	attr_entropies = sapply(new_data, entropy)
+	attr_entropies = sapply(new_data, entropyHelper)
 	class_entropy = attr_entropies[1]
 	attr_entropies = attr_entropies[-1]
 	joint_entropies = sapply(new_data[-1], function(t) {
-			joint.entropy(new_data[[1]], t)
+			entropyHelper(data.frame(cbind(new_data[[1]], t)))
 		})
 	results = class_entropy + attr_entropies - joint_entropies
 

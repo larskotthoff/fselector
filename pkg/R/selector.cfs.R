@@ -89,10 +89,6 @@ cfs <- function(formula, data) {
 		return(tmp_res)
 	}
 
-    entropyHelper <- function(x) {
-        return(entropy(table(x, useNA="always")))
-    }
-	
 	# uses parent.env
 	evaluator <- function(attrs) {
 		ff_sum = 0
