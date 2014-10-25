@@ -20,10 +20,12 @@ a character vector containing chosen attributes
 }
 \author{ Piotr Romanski }
 \examples{
+\dontrun{
   library(mlbench)
   data(HouseVotes84)
   
   subset <- consistency(Class~., HouseVotes84)
   f <- as.simple.formula(subset, "Class")
   print(f)
+}
 }

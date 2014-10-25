@@ -2,7 +2,7 @@ Package: FSelector
 Type: Package
 Title: Selecting attributes
 Version: 0.20
-Date: 2014-09-25
+Date: 2014-10-25
 Author: Piotr Romanski, Lars Kotthoff
 Maintainer: Lars Kotthoff <larsko@4c.ucc.ie>
 Description: This package provides functions for selecting attributes
