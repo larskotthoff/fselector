@@ -1,14 +1,13 @@
 Package: FSelector
 Type: Package
-Title: Selecting attributes
+Title: Selecting Attributes
 Version: 0.20
 Date: 2014-10-25
 Author: Piotr Romanski, Lars Kotthoff
 Maintainer: Lars Kotthoff <larsko@4c.ucc.ie>
-Description: This package provides functions for selecting attributes
-        from a given dataset. Attribute subset selection is the process
-        of identifying and removing as much of the irrelevant and
-        redundant information as possible.
+Description: Functions for selecting attributes from a given dataset. Attribute
+    subset selection is the process of identifying and removing as much of the
+    irrelevant and redundant information as possible.
 License: GPL-2
 Imports: randomForest, RWeka, digest, entropy
 Suggests: mlbench, rpart
