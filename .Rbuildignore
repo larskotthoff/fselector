@@ -1,2 +1,4 @@
 makeR
 Makefile
+^.*\.Rproj$
+^\.Rproj\.user$
