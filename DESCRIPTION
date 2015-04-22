@@ -4,7 +4,7 @@ Title: Selecting Attributes
 Version: 0.20
 Date: 2014-10-25
 Author: Piotr Romanski, Lars Kotthoff
-Maintainer: Lars Kotthoff <larsko@4c.ucc.ie>
+Maintainer: Lars Kotthoff <larsko@cs.ubc.ca>
 Description: Functions for selecting attributes from a given dataset. Attribute
     subset selection is the process of identifying and removing as much of the
     irrelevant and redundant information as possible.
