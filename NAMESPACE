@@ -1,5 +1,5 @@
 export("as.simple.formula",
-	"cutoff.biggest.diff",
+  "cutoff.biggest.diff",
 	"cutoff.k",
 	"cutoff.k.percent",
 	"best.first.search",
@@ -22,3 +22,5 @@ importFrom(randomForest, randomForest, importance)
 importFrom(RWeka, Discretize)
 importFrom(digest, digest)
 importFrom(entropy, entropy)
+importFrom(assertthat, assert_that)
+importFrom(testthat, test_that)

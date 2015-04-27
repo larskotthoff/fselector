@@ -1,9 +1,16 @@
-discretize.all <- function(formula, data) {
-	new_data = get.data.frame.from.formula(formula, data)
-	
-	dest_column_name = dimnames(new_data)[[2]][1]
+discretize.all <- function(formula, data, equalBins) {
+	#new_data = get.data.frame.from.formula(formula, data)
+  
+	# discretize.all is used only in information.gain.R, selector.chisquared.R,
+  # selector.consistency.R and selector.oneR.R where in all those functions
+  # the get.data.frame.from.formula is evaluated before discretize.all so this
+  # line is unnecessary
+  
+  
+	#dest_column_name = dimnames(new_data)[[2]][1] - this isn't used anywhere :|
 	if(!is.factor(new_data[[1]])) {
-		new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], 5)
+		# new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], 5) added new param
+		new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], bins = equalBins)
 	}
 	
 	new_data = supervised.discretization(formula, data = new_data)
@@ -13,7 +20,7 @@ discretize.all <- function(formula, data) {
 	return(new_data)
 }
 
-# unupervised
+# unupervised - it is very similar to `cut` function....
 equal.frequency.binning.discretization <- function(data, bins) {
 	bins = as.integer(bins)
 	if (!is.numeric(data)) 
@@ -49,7 +56,7 @@ equal.width.binning.discretization <- function(data, bins) {
 
 #MDL - Fayyad, Irani
 supervised.discretization <- function(formula, data) {
-	data = get.data.frame.from.formula(formula, data)
+	data = get.data.frame.from.formula(formula, data) # is it really necessary here...
 	complete = complete.cases(data[[1]])
 	all.complete = all(complete)
 	if(!all.complete) {
