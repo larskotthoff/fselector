@@ -16,8 +16,8 @@ symmetrical.uncertainty <- function(formula, data) {
 
 information.gain.body <- function(formula, data, type = c("infogain", "gainratio", "symuncert")) {
 	type = match.arg(type)
-	new_data = get.data.frame.from.formula(formula, data)
-	new_data = discretize.all(formula, new_data)
+	#new_data = get.data.frame.from.formula(formula, data)
+	new_data = discretize.all(formula, data) #new_data)
 	
 	attr_entropies = sapply(new_data, entropyHelper)
 	class_entropy = attr_entropies[1]
