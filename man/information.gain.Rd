@@ -7,13 +7,14 @@
   The algorithms find weights of discrete attributes basing on their correlation with continous class attribute.
 }
 \usage{
-information.gain(formula, data)
-gain.ratio(formula, data)
-symmetrical.uncertainty(formula, data)
+information.gain(formula, data, unit)
+gain.ratio(formula, data, unit)
+symmetrical.uncertainty(formula, data, unit)
 }
 \arguments{
-  \item{formula}{ a symbolic description of a model }
-  \item{data}{ data to process }
+  \item{formula}{ A symbolic description of a model. }
+  \item{data}{ Data to process. }
+  \item{unit}{ Unit for computing entropy (passed to \code{entropy}. Default is "log".}
 }
 \details{
   \code{information.gain} is \deqn{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Class) + H(Attribute) - H(Class, Attribute)}.
@@ -25,7 +26,7 @@ symmetrical.uncertainty(formula, data)
 \value{
 a data.frame containing the worth of attributes in the first column and their names as row names
 }
-\author{ Piotr Romanski }
+\author{ Piotr Romanski, Lars Kotthoff }
 \examples{
   data(iris)
 
