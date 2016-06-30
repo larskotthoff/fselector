@@ -11,6 +11,6 @@ get.data.frame.from.formula <- function(formula, data) {
 	return(d)
 }
 
-entropyHelper <- function(x, unit) {
+entropyHelper <- function(x, unit = "log") {
     return(entropy(table(x, useNA="always"), unit = unit))
 }

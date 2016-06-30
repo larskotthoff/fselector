@@ -14,7 +14,7 @@ symmetrical.uncertainty(formula, data, unit)
 \arguments{
   \item{formula}{ A symbolic description of a model. }
   \item{data}{ Data to process. }
-  \item{unit}{ Unit for computing entropy (passed to \code{entropy}. Default is "log".}
+  \item{unit}{ Unit for computing entropy (passed to \code{\link[entropy]{entropy}}. Default is "log".}
 }
 \details{
   \code{information.gain} is \deqn{H(Class) + H(Attribute) - H(Class, Attribute)}{H(Class) + H(Attribute) - H(Class, Attribute)}.
@@ -35,6 +35,9 @@ a data.frame containing the worth of attributes in the first column and their na
   subset <- cutoff.k(weights, 2)
   f <- as.simple.formula(subset, "Species")
   print(f)
+
+  weights <- information.gain(Species~., iris, unit = "log2")
+  print(weights)
 
   weights <- gain.ratio(Species~., iris)
   print(weights)
