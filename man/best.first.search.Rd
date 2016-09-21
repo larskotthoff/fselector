@@ -13,7 +13,7 @@ best.first.search(attributes, eval.fun, max.backtracks = 5)
   \item{max.backtracks}{ an integer indicating a maximum allowed number of backtracks, default is 5 }
 }
 \details{
-  The algorithm is similar to \code{\link{forward.search}} besides the fact that is chooses the best node from all already evaluated ones and evaluates it. The selection of the best node is repeated approximately \code{max.brackets} times in case no better node found.
+  The algorithm is similar to \code{\link{forward.search}} besides the fact that is chooses the best node from all already evaluated ones and evaluates it. The selection of the best node is repeated approximately \code{max.backtracks} times in case no better node found.
 }
 \value{
   A character vector of selected attributes.
