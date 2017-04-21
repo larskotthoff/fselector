@@ -1,7 +1,9 @@
 best.first.search <- function(attributes, eval.fun, max.backtracks = 5) {
 	if(length(attributes) == 0)
 		stop("Attributes not specified")
-	
+  
+  curr.backtracks <- max.backtracks
+  
 	eval.fun = match.fun(eval.fun)
 	
 	attach_children <- function(states, best) {
@@ -39,7 +41,10 @@ best.first.search <- function(attributes, eval.fun, max.backtracks = 5) {
 					attrs = attributes[as.logical(vec)]
 					return(eval.fun(attrs))
 				})
+		} else {
+		  break
 		}
+		
 		#find best
 		new_best = find.best(states$results, states$open)
 
@@ -49,13 +54,16 @@ best.first.search <- function(attributes, eval.fun, max.backtracks = 5) {
 		states$open[new_best$idx] = FALSE
 		if(new_best$result > best$result) {
 			best = new_best
-			states = attach_children(states, best)
+			# reset backtracks
+			curr.backtracks <- max.backtracks
 		} else {
-			if(max.backtracks > 0) {
-				max.backtracks = max.backtracks - 1
+			if(curr.backtracks > 0) {
+				curr.backtracks = curr.backtracks - 1
 			} else
 				break
 		}
+		states = attach_children(states, new_best)
+		
 	}
 	return(attributes[as.logical(states$attrs[best$idx, ])])
 
