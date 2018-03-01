@@ -13,7 +13,7 @@ oneR <- function(formula, data) {
 			vec = factor(vec)
 			errors = sapply(levels(vec), function(val) {
 					cvaluestab = as.vector(table(class_data[ which(vec == val) ]))
-					return(sum(cvaluestab[ -which.max(cvaluestab) ]) / sum(cvaluestab))
+					return(sum(cvaluestab[ -which.max(cvaluestab) ]) / length(class_data))
 				})
 			return(sum(errors))
 		})
