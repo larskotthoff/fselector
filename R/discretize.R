@@ -22,7 +22,7 @@ equal.frequency.binning.discretization <- function(data, bins) {
 		stop("Number of bins too small")
 	
 	complete = complete.cases(data)
-	ord = order(data)
+	ord = do.call(order, data)
 	len = length(data[complete])
 	blen = len / bins
 	new_data = data

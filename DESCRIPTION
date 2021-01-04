@@ -1,8 +1,8 @@
 Package: FSelector
 Type: Package
 Title: Selecting Attributes
-Version: 0.31
-Date: 2018-05-16
+Version: 0.32
+Date: 2021-01-04
 Author: Piotr Romanski, Lars Kotthoff
 Maintainer: Lars Kotthoff <larsko@uwyo.edu>
 Description: Functions for selecting attributes from a given dataset. Attribute
