@@ -5,7 +5,7 @@ cutoff.k <- function(attrs, k) {
 		stop("k too small")
 	if(k > dim(attrs)[1])
 		k = dim(attrs)[1]
-	sorted_names = rownames(attrs)[do.call(order, c(attrs, decreasing = TRUE))]
+	sorted_names = rownames(attrs)[do.call(order, c(list(attrs), decreasing = TRUE))]
 	return(sorted_names[1:k])
 }
 
@@ -18,7 +18,7 @@ cutoff.k.percent <- function(attrs, k) {
 		warning("Assumed k=1")
 		k = 1
 	}
-	sorted_names = rownames(attrs)[do.call(order, c(attrs, decreasing = TRUE))]
+	sorted_names = rownames(attrs)[do.call(order, c(list(attrs), decreasing = TRUE))]
 	return(sorted_names[1:round((k * length(sorted_names)))])
 }
 
@@ -28,7 +28,7 @@ cutoff.biggest.diff <- function(attrs) {
 	else if(dim(attrs)[1] == 1)
 		return(dimnames(attrs)[[1]])
 	
-	perm = do.call(order, c(attrs[,1], decreasing = TRUE))
+	perm = do.call(order, c(list(attrs[,1]), decreasing = TRUE))
 	attrs = attrs[perm, , drop = FALSE]
 	
 	intervals = sapply(1:(dim(attrs)[1] - 1), function(idx) {
