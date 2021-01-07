@@ -28,7 +28,7 @@ cutoff.biggest.diff <- function(attrs) {
 	else if(dim(attrs)[1] == 1)
 		return(dimnames(attrs)[[1]])
 	
-	perm = do.call(order, c(attrs[,1], decreasing = TRUE))
+	perm = order(attrs[,1], decreasing = TRUE)
 	attrs = attrs[perm, , drop = FALSE]
 	
 	intervals = sapply(1:(dim(attrs)[1] - 1), function(idx) {
