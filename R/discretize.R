@@ -1,11 +1,11 @@
 discretize.all <- function(formula, data) {
 	new_data = get.data.frame.from.formula(formula, data)
-	
+
 	dest_column_name = dimnames(new_data)[[2]][1]
 	if(!is.factor(new_data[[1]])) {
 		new_data[[1]] = equal.frequency.binning.discretization(new_data[[1]], 5)
 	}
-	
+
 	new_data = supervised.discretization(formula, data = new_data)
 
 	# reorder attributes
@@ -16,13 +16,13 @@ discretize.all <- function(formula, data) {
 # unupervised
 equal.frequency.binning.discretization <- function(data, bins) {
 	bins = as.integer(bins)
-	if (!is.numeric(data)) 
+	if (!is.numeric(data))
 		stop("Data must be numeric")
 	if(bins < 1)
 		stop("Number of bins too small")
-	
+
 	complete = complete.cases(data)
-	ord = do.call(order, data)
+	ord = do.call(order, list(data))
 	len = length(data[complete])
 	blen = len / bins
 	new_data = data
@@ -40,7 +40,7 @@ equal.frequency.binning.discretization <- function(data, bins) {
 
 # unupervised
 equal.width.binning.discretization <- function(data, bins) {
-	if (!is.numeric(data)) 
+	if (!is.numeric(data))
 		stop("Data must be numeric")
 	if(bins < 1)
 		stop("Number of bins too small")
@@ -59,5 +59,5 @@ supervised.discretization <- function(formula, data) {
 	} else {
 		return(Discretize(formula, data = data, na.action = na.pass))
 	}
-	
+
 }
