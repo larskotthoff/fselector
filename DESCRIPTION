@@ -1,9 +1,9 @@
 Type: Package
 Package: FSelector
 Title: Selecting Attributes
-Version: 0.32
-Date: 2021-01-04
-Author: Piotr Romanski, Lars Kotthoff
+Version: 0.33
+Date: 2021-02-16
+Author: Piotr Romanski, Lars Kotthoff, Patrick Schratz
 Maintainer: Lars Kotthoff <larsko@uwyo.edu>
 BugReports: https://github.com/larskotthoff/fselector/issues
 URL: https://github.com/larskotthoff/fselector
