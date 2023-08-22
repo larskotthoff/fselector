@@ -9,14 +9,6 @@
   Package containing functions for selecting attributes from a given dataset and a destination attribute.
 }
 \details{
-\tabular{ll}{
-Package: \tab FSelector\cr
-Type: \tab Package\cr
-Version: \tab 0.31\cr
-Date: \tab 2018-05-16\cr
-License: \tab GPL-2\cr
-LazyLoad: \tab yes\cr
-}
 This package contains:
 \itemize{
   \item{-}{Algorithms for filtering attributes: cfs, chi.squared, information.gain, gain.ratio, symmetrical.uncertainty, linear.correlation, rank.correlation, oneR, relief, consistency, random.forest.importance}
@@ -26,7 +18,7 @@ This package contains:
 }
 }
 \author{
-Piotr Romanski \cr
+Piotr Romanski\cr
 Maintainer: Lars Kotthoff <larsko@uwyo.edu>
 }
 \keyword{ package }
